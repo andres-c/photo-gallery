@@ -1,13 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AlertModule } from 'ngx-bootstrap/alert';
 import { ImageComponent } from './image/image.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { ImageService } from './image/shared/image.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 
 
@@ -19,13 +23,13 @@ import { GalleryComponent } from './gallery/gallery.component';
     GalleryComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AlertModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-
+    InfiniteScrollModule
 
   ],
-  providers: [],
+  providers: [ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
